@@ -9,6 +9,10 @@ RUN DEBIAN_FRONTEND=noninteractive \
     wget -q $DOWNLOAD_URL/$UPSTREAM_VERSION/validator-$UPSTREAM_VERSION-linux-${TARGETARCH:-amd64} -O /usr/local/bin/validator && \
     chmod +x  /usr/local/bin/validator
 
+# Copy entrypoint script
+COPY entrypoint.sh /usr/local/bin
+RUN  chmod +x /usr/local/bin/entrypoint.sh
+
 FROM debian:buster-slim
 
 RUN apt update && \
@@ -17,8 +21,7 @@ RUN apt update && \
 
 #Copy binaries from build stage
 COPY --from=binary /usr/local/bin/validator /usr/local/bin
+COPY --from=binary /usr/local/bin/entrypoint.sh /usr/local/bin
 
-# Copy entrypoint script
-COPY entrypoint.sh /usr/local/bin
 
 ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]
