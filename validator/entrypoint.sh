@@ -26,7 +26,7 @@ if [ ! -z "$TOKEN" ]; then
         --retry 5 \
         --retry-delay 0 \
         --retry-max-time 40 \
-        -X POST "http://my.dappnode/data-send?key=token&data=http://prysm-ropsten.dappnode/initialize?token=${TOKEN}" \
+        -X POST "http://my.dappnode/data-send?key=token&data=http://http://validator.prysm-ropsten.public.dappnode/initialize?token=${TOKEN}" \
         || { echo "[ERROR] failed to post JWT to dappmanager"; exit 1; }
 
 else
