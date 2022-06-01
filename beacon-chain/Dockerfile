@@ -34,8 +34,8 @@ ENTRYPOINT [ "sh", "-c", "exec beacon-chain \
     --http-web3provider=\"$HTTP_WEB3PROVIDER\" \
     --grpc-gateway-port=3500 \
     --grpc-gateway-corsdomain=\"$CORSDOMAIN\" \
-    --genesis-state=/genesis.ssz \
-    --config-file=/config.yaml\
-    --chain-config-file=/config.yaml \
+    --genesis-state /genesis.ssz \
+    --config-file /config.yaml \
+    --chain-config-file /config.yaml \
     --accept-terms-of-use \
     $EXTRA_OPTS" ]
