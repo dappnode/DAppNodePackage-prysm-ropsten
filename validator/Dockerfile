@@ -23,5 +23,4 @@ RUN apt update && \
 COPY --from=binary /usr/local/bin/validator /usr/local/bin
 COPY --from=binary /usr/local/bin/entrypoint.sh /usr/local/bin
 
-
 ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]

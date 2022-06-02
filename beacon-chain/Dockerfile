@@ -17,6 +17,7 @@ FROM debian:buster-slim
 COPY --from=binary /usr/local/bin/beacon-chain /usr/local/bin/beacon-chain
 COPY --from=binary /tmp/genesis.ssz /genesis.ssz
 COPY --from=binary /tmp/config.yaml /config.yaml
+COPY jwtsecret /jwtsecret
 # COPY --from=binary /tmp/boot_enr.txt /boot_enr.txt
 
 RUN apt update && \
@@ -38,5 +39,6 @@ ENTRYPOINT [ "sh", "-c", "exec beacon-chain \
     --bootstrap-node=enr:-Iq4QMCTfIMXnow27baRUb35Q8iiFHSIDBJh6hQM5Axohhf4b6Kr_cOCu0htQ5WvVqKvFgY28893DHAg8gnBAXsAVqmGAX53x8JggmlkgnY0gmlwhLKAlv6Jc2VjcDI1NmsxoQK6S-Cii_KmfFdUJL2TANL3ksaKUnNXvTCv1tLwXs0QgIN1ZHCCIyk \
     --config-file /config.yaml \
     --chain-config-file /config.yaml \
+    --jwt-secret=/jwtsecret \
     --accept-terms-of-use \
     $EXTRA_OPTS" ]
