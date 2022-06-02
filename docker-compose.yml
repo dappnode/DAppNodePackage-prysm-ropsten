@@ -28,6 +28,7 @@ services:
     environment:
       BEACON_RPC_PROVIDER: "beacon-chain.prysm-ropsten.dappnode:4000"
       BEACON_RPC_GATEWAY_PROVIDER: "beacon-chain.prysm-ropsten.dappnode:3500"
+      FEES_RECIPIENT: ""
       GRAFFITI: validating_from_DAppNode
       EXTRA_OPTS: ""
 volumes:
