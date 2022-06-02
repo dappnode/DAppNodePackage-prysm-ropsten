@@ -13,6 +13,7 @@ services:
       - 12000/udp
     restart: unless-stopped
     environment:
+      FEE_RECIPIENT: ""
       HTTP_WEB3PROVIDER: "http://ropsten.dappnode:8551"
       CORSDOMAIN: "http://prysm-ropsten.dappnode"
       EXTRA_OPTS: ""
@@ -28,7 +29,6 @@ services:
     environment:
       BEACON_RPC_PROVIDER: "beacon-chain.prysm-ropsten.dappnode:4000"
       BEACON_RPC_GATEWAY_PROVIDER: "beacon-chain.prysm-ropsten.dappnode:3500"
-      FEES_RECIPIENT: ""
       GRAFFITI: validating_from_DAppNode
       EXTRA_OPTS: ""
 volumes:
