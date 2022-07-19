@@ -1,36 +1,43 @@
-version: "3.4"
+version: "3.5"
 services:
   beacon-chain:
     image: "beacon-chain.prysm-ropsten.public.dappnode.eth:0.1.0"
     build:
       context: beacon-chain
       args:
-        UPSTREAM_VERSION: v2.1.3-rc.2
+        UPSTREAM_VERSION: v2.1.2
     volumes:
       - "beacon-chain-data:/data"
     ports:
-      - "13000"
-      - 12000/udp
+      - "19214:19214/tcp"
+      - "18214:18214/udp"
     restart: unless-stopped
     environment:
       FEE_RECIPIENT: ""
-      HTTP_WEB3PROVIDER: "http://ropsten.dappnode:8551"
+      HTTP_WEB3PROVIDER: "http://nethermind-ropsten.public.dappnode:8551"
       CORSDOMAIN: "http://prysm-ropsten.dappnode"
+      TTD_OVERRIDE: 50000000000000000
+      P2P_TCP_PORT: 19214
+      P2P_UDP_PORT: 18214
       EXTRA_OPTS: ""
   validator:
     image: "validator.prysm-ropsten.public.dappnode.eth:0.1.0"
     build:
       context: validator
+      dockerfile: Dockerfile
       args:
-        UPSTREAM_VERSION: v2.1.3-rc.2
+        UPSTREAM_VERSION: v2.1.2
+        BRANCH: develop
     volumes:
       - "validator-data:/root/"
     restart: unless-stopped
     environment:
+      LOG_TYPE: INFO
       BEACON_RPC_PROVIDER: "beacon-chain.prysm-ropsten.dappnode:4000"
       BEACON_RPC_GATEWAY_PROVIDER: "beacon-chain.prysm-ropsten.dappnode:3500"
       GRAFFITI: validating_from_DAppNode
       EXTRA_OPTS: ""
+      FEE_RECIPIENT_ADDRESS: ""
 volumes:
   beacon-chain-data: {}
   validator-data: {}

@@ -22,7 +22,4 @@ fields:
       If you have not already, make sure to install and sync an Eth1.x node of your choice.
       Then, input the URL of the node that you wish to use or a remote one:
       - Geth `http://geth.dappnode:8545` - [Install link](http://my.dappnode/#/installer/geth.dnp.dappnode.eth)
-      - Turbo Geth `http://turbo-geth.dappnode:8545` - [Install link](http://my.dappnode/#/installer/turbo-geth.dnp.dappnode)
-      - OpenEthereum `http://openethereum.dappnode:8545` - [Install link](http://my.dappnode/#/installer/openethereum.dnp.dappnode.eth)
-      - Nethermind `http://nethermind.public.dappnode:8545` - [Install link](http://my.dappnode/#/installer/nethermind.public.dappnode.eth)
-      - Remote node (example URL) `https://remote-node-provider.io`
+      - Nethermind `http://nethermind-ropsten.public.dappnode:8545` - [Install link](http://my.dappnode/#/installer/nethermind.public.dappnode.eth)
